@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         JSONData = new network("101010100");
-
+        imageView.setAlpha(0f);
 
     }
 
