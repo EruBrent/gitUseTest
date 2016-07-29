@@ -9,3 +9,14 @@
     </style>
 
 </resources>
+
+void DlgAlarmInfoInterface::ShowDlgAlarmInfoInterface(BOOL bShow, CWnd* pParent)
+{
+	static DlgAlarmInfoInterface* s_pDlgAlarmInfo = NULL;
+	if (!s_pDlgAlarmInfo)
+	{
+		s_pDlgAlarmInfo = new DlgAlarmInfoInterface(pParent);
+		s_pDlgAlarmInfo->Create(DlgAlarmInfoInterface::IDD, pParent);
+	}
+	s_pDlgAlarmInfo->ShowWindow(bShow?SW_SHOW:SW_HIDE);
+}
