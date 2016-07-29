@@ -10,13 +10,29 @@
 
 </resources>
 
-void DlgAlarmInfoInterface::ShowDlgAlarmInfoInterface(BOOL bShow, CWnd* pParent)
+CString SO;
+	CG_ALARMINFO_SHOW infoshow;
+	vector<CG_ALARMINFO_SHOW> temp_show;
+	infoshow.m_strTime = info.happenTime;
+	infoshow.m_strFrom = info.happenLocation;
+	temp_show.push_back(infoshow);
+	Dlg_AlarmInfoState =FALSE;
+	//m_record->WriterAlarmLog(temp_show);
+	//securityOfficer.GetWindowText(SO);
+	//info.securityOfficer =SO.GetBuffer(0);
+	tempSave.push_back(info);
+	
+	/*------------------------------我的名字叫分割线----------------------------------------*/
+void DlgAlarmInfoInterface::CreateButton(int ButtonQuantity)
 {
-	static DlgAlarmInfoInterface* s_pDlgAlarmInfo = NULL;
-	if (!s_pDlgAlarmInfo)
-	{
-		s_pDlgAlarmInfo = new DlgAlarmInfoInterface(pParent);
-		s_pDlgAlarmInfo->Create(DlgAlarmInfoInterface::IDD, pParent);
-	}
-	s_pDlgAlarmInfo->ShowWindow(bShow?SW_SHOW:SW_HIDE);
+		buttonQuantity++;
+		CButton* btn = new CButton;
+		CString temp;
+ 		CWnd* wnd = FindWindow(NULL,_T("Dlg_AlarmlogInfo"));
+		DWORD dwStyle = WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;  
+
+		temp.Format("%d",ButtonQuantity);
+		btn->Create(temp,dwStyle ,CRect(20+80*ButtonQuantity,20,80+80*ButtonQuantity,60),wnd,IDC_D_BTN+ButtonQuantity); 
+
+		delete btn;
 }
